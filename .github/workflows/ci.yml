@@ -17,7 +17,7 @@ jobs:
             - run: make clean
             - run: make CC=gcc
             - run: nm -n kernel/kernel | awk 'NF==3'
-            - run: make test
+            - run: make test CC=gcc
               timeout-minutes: 1
             - run: grub-file --is-x86-multiboot kernel/kernel
             - run: make cdrom.iso
