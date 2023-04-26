@@ -67,8 +67,8 @@ OBJS := \
 	../common/math.o \
 	../common/string.o \
 	../common/strings.o \
- 	../common/stdio.o \
- 	../common/stdlib.o
+	../common/stdio.o \
+	../common/stdlib.o
 
 DEPS := $(OBJS:.o=.d)
 
@@ -87,6 +87,8 @@ $(TARGET): $(OBJS) linker.ld
 .S.o:
 	@echo "[AS] $<"
 	@$(CC) $(CFLAGS) -MMD -MP -c -o $@ $<
+
+$(OBJS): ../common/configuration.h
 
 clean:
 	$(RM) $(TARGET) $(OBJS) $(DEPS)
